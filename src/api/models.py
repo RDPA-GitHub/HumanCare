@@ -14,7 +14,7 @@ class User(db.Model):
     roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable =False)
     roles = db.relationship('Role',  backref="user")
     medical_record = db.relationship('Medical_record',  backref="user", uselist = False)
-    medical_appoinment = db.relationship('Medical_appoinment',  backref="user")
+    medical_appoinment = db.relationship('Medical_appoinment')
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -61,8 +61,8 @@ class Medical_record(db.Model):
 class Medical_appoinment(db.Model):
     __tablename__ = 'medical_appoinment'
     id = db.Column(db.Integer, primary_key=True)
-    user_id=db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    doctor_id=db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+    doctor_id=db.Column(db.Integer, db.ForeignKey('user.id'))
     file = db.Column(db.String(150), nullable=False)
     comment = db.Column(db.String(500), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
