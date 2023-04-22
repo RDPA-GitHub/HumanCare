@@ -1,4 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
+cfrom flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
