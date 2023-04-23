@@ -14,7 +14,16 @@ class User(db.Model):
     roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable =False)
     roles = db.relationship('Role',  backref="user")
     medical_record = db.relationship('Medical_record',  backref="user", uselist = False)
-    medical_appoinment = db.relationship('Medical_appoinment')
+    # medical_appoinment = db.relationship(
+    #     'Medical_appoinment',
+    #     primaryjoin='User.id == Medical_appoinment.user_id',
+    #     secondaryjoin='User.id == Medical_appoinment.doctor_id',
+    #     secondary='medical_appoinment',
+    #     backref='users'
+    # )
+    medical_appoinments = db.relationship('Medical_appoinment', foreign_keys='[Medical_appoinment.doctor_id]', backref='doctor')
+    patient_appoinments = db.relationship('Medical_appoinment', foreign_keys='[Medical_appoinment.user_id]', backref='patient')
+
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -41,28 +50,28 @@ class Medical_file(db.Model):
 class Medical_record(db.Model):
     __tablename__ = 'medical_record'
     id = db.Column(db.Integer, primary_key=True)
-    user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     full_name = db.Column(db.String(150), nullable=False)
     age = db.Column(db.Integer, nullable=False)
-    identity_card: db.Column(db.Integer, nullable=False)
-    adress: db.Column(db.String(200), nullable=False)
-    phone_number:db.Column(db.Integer, nullable=False)
-    reason_for_consultation: db.Column(db.String(200), nullable=False)
-    current_illness: db.Column(db.String(200), nullable=False)
-    criminal_record: db.Column(db.String(200), nullable=False)
-    family_history: db.Column(db.String(200), nullable=False)
-    surgical_history: db.Column(db.String(200), nullable=False)
-    physical_examination: db.Column(db.String(500), nullable=False)
-    diagnosis: db.Column(db.String(200), nullable=False)
-    treatment: db.Column(db.String(200), nullable=False)
-    observations: db.Column(db.String(200), nullable=False)
+    identity_card = db.Column(db.Integer, nullable=False)
+    adress = db.Column(db.String(200), nullable=False)
+    phone_number =db.Column(db.Integer, nullable=False)
+    reason_for_consultation = db.Column(db.String(200), nullable=False)
+    current_illness = db.Column(db.String(200), nullable=False)
+    criminal_record = db.Column(db.String(200), nullable=False)
+    family_history = db.Column(db.String(200), nullable=False)
+    surgical_history = db.Column(db.String(200), nullable=False)
+    physical_examination = db.Column(db.String(500), nullable=False)
+    diagnosis = db.Column(db.String(200), nullable=False)
+    treatment = db.Column(db.String(200), nullable=False)
+    observations = db.Column(db.String(200), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
 
 class Medical_appoinment(db.Model):
     __tablename__ = 'medical_appoinment'
     id = db.Column(db.Integer, primary_key=True)
-    user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
-    doctor_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id=db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    doctor_id=db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     file = db.Column(db.String(150), nullable=False)
     comment = db.Column(db.String(500), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
