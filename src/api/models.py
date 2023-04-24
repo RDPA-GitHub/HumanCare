@@ -32,13 +32,43 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "password": self.password,
+            "profile_information": self.profile_information,
             # do not serialize the password, its a security breach
         }
+    
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 class Medical_file(db.Model):
     __tablename__ = 'medical_file'
@@ -46,6 +76,26 @@ class Medical_file(db.Model):
     user_id=db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     file = db.Column(db.String(150), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "file": self.file,
+            "users_to_id": self.users_to_id,
+            "date": self.date,
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 class Medical_record(db.Model):
     __tablename__ = 'medical_record'
@@ -67,6 +117,38 @@ class Medical_record(db.Model):
     observations = db.Column(db.String(200), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "full_name": self.full_name,
+            "age": self.age,
+            "identity_card": self.identity_card,
+            "adress": self.adress,
+            "phone_number": self.phone_number,
+            "reason_for_consultation": self.reason_for_consultation,
+            "current_illness": self.current_illness,
+            "criminal_record": self.criminal_record,
+            "family_history": self.family_history,
+            "surgical_history": self.surgical_history,
+            "physical_examination": self.physical_examination,
+            "diagnosis": self.diagnosis,
+            "treatment": self.treatment,
+            "observations": self.observations,
+            "date": self.date,
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 class Medical_appoinment(db.Model):
     __tablename__ = 'medical_appoinment'
     id = db.Column(db.Integer, primary_key=True)
@@ -75,3 +157,24 @@ class Medical_appoinment(db.Model):
     file = db.Column(db.String(150), nullable=False)
     comment = db.Column(db.String(500), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "doctor_id": self.doctor_id,
+            "file": self.file,
+            "comment": self.comment,
+            "date": self.date,
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
