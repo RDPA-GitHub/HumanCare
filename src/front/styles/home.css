@@ -5,3 +5,33 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+/* .masked {
+    width: 100px!important;
+    height: 100px!important;
+    background-color: #8cffa0!important;
+    -webkit-mask-image: url(../img/mask-img.svg)!important;
+    mask-image: url(https://picsum.photos/id/237/200/200)!important;
+  } */
+/* .mask{
+    height: 192px!important;
+    object-fit: contain!important;
+    -webkit-mask-image: url(../img/mask-img.svg)left top / contain no-repeat !important;
+    width: 280px!important;
+} */
+.forma1 {
+    /* -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%)!important; */
+    /* clip-path: polygon(0% 0%, 75% 26%, 78% 87%, 0% 100%)!important; */
+    clip-path: polygon(0% 0%, 100% 11%, 112% 92%, 0% 100%)!important;
+ }
+
+ .forma2 {
+    /* -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%)!important; */
+    /* clip-path: polygon(0% 0%, 75% 26%, 78% 87%, 0% 100%)!important; */
+    clip-path: polygon(8% 8%, 100% 0%, 100% 100%, 8% 86%)!important;
+ }
+
+
+ /* .carousel, .carousel-inner > .item > img {
+    height: 100px !important;
+  } */
+  

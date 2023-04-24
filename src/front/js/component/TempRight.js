@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../../styles/home.css";
 const TempRight = () => {
     return (
         <div className="container bg-white  d-flex align-items-center py-5">
@@ -13,10 +13,11 @@ const TempRight = () => {
                         corporis id minima laboriosam impedit tenetur repellendus ipsum ipsam
                         facilis ducimus doloribus?{" "}
                     </p>
+                    <button type="button" class="btn btn-dark rounded-pill">Unirme a HumanCare</button>
                 </div>
                 <img
                     src="https://picsum.photos/id/237/200/200"
-                    className="rounded-circle float-end col-3 "
+                    className=" float-end col-3 forma2"
                     // style={{ WebkitMask: `url(${Mask}) no-repeat center / cover` }}
                     alt="..."
                 />
