@@ -21,7 +21,7 @@
 .forma1 {
     /* -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%)!important; */
     /* clip-path: polygon(0% 0%, 75% 26%, 78% 87%, 0% 100%)!important; */
-    clip-path: polygon(0% 0%, 100% 11%, 112% 92%, 0% 100%)!important;
+    clip-path: polygon(8% 8%, 100% 0%, 100% 100%, 8% 86%)!important;
  }
 
  .forma2 {
@@ -29,6 +29,21 @@
     /* clip-path: polygon(0% 0%, 75% 26%, 78% 87%, 0% 100%)!important; */
     clip-path: polygon(8% 8%, 100% 0%, 100% 100%, 8% 86%)!important;
  }
+
+ .testimonial-card .card-up {
+    height: 120px !important;
+    overflow: hidden;
+    border-top-left-radius: 0.25rem!important;
+    border-top-right-radius: 0.25rem!important;
+    }
+    
+.testimonial-card .avatar {
+    width: 110px!important;
+    margin-top: -60px!important;
+    overflow: hidden!important;
+    border: 3px solid #fff!important;
+    border-radius: 50%!important;
+    }
 
 
  /* .carousel, .carousel-inner > .item > img {

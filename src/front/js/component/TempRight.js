@@ -6,7 +6,7 @@ const TempRight = () => {
             <div className="d-flex justify-content-center a">
 
                 <div className="col-7 pt-5 ps-3 text-start mt-5" >
-                    <h1>Cuida tu salud con nosotros</h1>
+                    <h1 className='display-4'>Cuida tu salud con nosotros</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti aut
                         officia doloribus fugit blanditiis. Deserunt mollitia, rem autem
