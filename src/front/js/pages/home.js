@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
-import TempLeft from "../component/tempLeft";
-import TempRight from "../component/TempRight";
-import Corousel from "../component/Corousel";
+import TempLeft from "../component/home/TempLeft";
+import TempRight from "../component/home/TempRight";
+import Corousel from "../component/home/Corousel";
+
 import "../../styles/home.css";
 
 export const Home = () => {
