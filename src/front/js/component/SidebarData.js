@@ -9,26 +9,26 @@ export const SidebarData = [
     {
         title: "Dashboard",
         icon: <AiFillDashboard/>,
-        link: "/dashboard"
+        path: "/dashboard"
     },
     {
         title: "Patients",
         icon: <BsFillPeopleFill/>,
-        link: "/Patients"
+        path: "/patients"
     },
     {
         title: "Add Patient",
         icon: <MdPersonAddAlt1/>,
-        link: "/add-patient"
+        path: "/add-patient"
     },
     {
         title: "Profile",
         icon: <CgProfile/>,
-        link: "/profile"
+        path: "/profile"
     },
     {
         title: "Support",
         icon: <BiSupport/>,
-        link: "/support"
+        path: "/support"
     }
 ]

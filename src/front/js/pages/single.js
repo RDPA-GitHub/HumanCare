@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Sidebar from "../component/sidebar";
 import '../../styles/sidebar.css'
+
 export const Single = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
@@ -13,7 +14,6 @@ export const Single = props => {
 			<div className="nav">
 				<Sidebar />
 			</div>
-
 		</>
 	);
 };

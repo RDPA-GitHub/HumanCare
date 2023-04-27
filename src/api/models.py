@@ -1,6 +1,24 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, Model
 
-db = SQLAlchemy()
+class ModeloStandard(Model):
+
+    def serializetwo(self):
+        role = self.__dict__
+        del role ["_sa_instance_state"]
+        return role
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+db = SQLAlchemy(model_class = ModeloStandard)
 
 
 
@@ -12,7 +30,7 @@ class User(db.Model):
     profile_information = db.Column(db.String(200), nullable=False)
     profile_picture = db.Column(db.String(150), nullable=False)
     roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable =False)
-    roles = db.relationship('Role',  backref="user")
+
     medical_record = db.relationship('Medical_record',  backref="user", uselist = False)
     # medical_appoinment = db.relationship(
     #     'Medical_appoinment',
@@ -52,23 +70,20 @@ class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
+    users = db.relationship('User',  backref="role")
 
     def serialize(self):
         return {
             "id": self.id,
             "name": self.name,
         }
+    
+    def serializeTres(self):
+        primer = self.serializetwo()
+        primer["usuarios"] = list(map(lambda user: user.serializetwo(), self.users))
+        return primer 
+    
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def update(self):
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
 class Medical_file(db.Model):
     __tablename__ = 'medical_file'

@@ -5,7 +5,7 @@ import BackgroundImage from "../component/about-us/BackgroundImage";
 import Testimonials from "../component/about-us/Testimonials";
 import { Context } from "../store/appContext";
 
-export const Demo = () => {
+export const AboutUs = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
